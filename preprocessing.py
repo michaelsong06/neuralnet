@@ -5,3 +5,4 @@ def normalize(x: np.ndarray) -> np.ndarray:
 
 def one_hot_encode(x: np.ndarray, num_labels: int) -> np.ndarray:
     return np.eye(num_labels)[x]
+
