@@ -123,5 +123,30 @@ class NeuralNetwork():
         P = self.predict(X)
         return sum(np.equal(P, np.argmax(y, axis=0))) / y.shape[1]*100
 
-
+    def plot_cost(self, lr):
+        plt.figure(figsize=(8, 4))
+        plt.plot(np.arange(0, len(self.costs)), self.costs, lw=1, color="orange")
+        plt.title(f"Learning rate: {lr}\nFinal Cost: {self.costs[-1]:.5f}", fontdict={
+        "family":"sans-serif", 
+        "size": "12"})
+        plt.xlabel("Epoch")
+        plt.ylabel("Cost")
+        plt.show()
+    
+    def plot_accuracies(self, lr):
+        acc = self.accuracies
+        fig = plt.figure(figsize=(6,4))
+        ax = fig.add_subplot(111)
+        ax.plot(acc["train"], label="train")
+        ax.plot(acc["test"], label="test")
+        plt.legend(loc="lower right")
+        ax.set_title("Accuracy")
+        ax.annotate(f"Train: {acc['train'][-1]:.2f}", (len(acc["train"])+4, acc["train"][-1]+2), color="blue")
+        ax.annotate(f"Test: {acc['test'][-1]:.2f}", (len(acc["test"])+4, acc["test"][-1]-2), color="orange")
+        ax.spines["right"].set_visible(False)
+        ax.spines["top"].set_visible(False)
+        plt.show()
+    
+    def __str__(self):
+        return str(self.architecture)
 
