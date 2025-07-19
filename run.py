@@ -1,6 +1,5 @@
 from network import *
-from preprocessing import *
-from activations import *
+from utils import *
 from sklearn.datasets import fetch_openml
 
 mnist = fetch_openml(name="mnist_784")
